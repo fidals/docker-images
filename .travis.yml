@@ -4,8 +4,8 @@ services:
 before_install:
   - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
 script:
-  - docker build -t fidals/coala ./coala/
-  - docker build -t fidals/pdd ./pdd/
+  - docker build -t fidals/coala-ci ./coala/
+  - docker build -t fidals/pdd-ci ./pdd/
 after_success:
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
     docker push fidals/coala:latest;
