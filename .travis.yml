@@ -1,0 +1,13 @@
+sudo: required
+services:
+  - docker
+before_install:
+  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+script:
+  - docker build -t fidals/coala-ci ./coala/
+  - docker build -t fidals/pdd-ci ./pdd/
+after_success:
+  - if [ "$TRAVIS_BRANCH" == "master" ]; then
+    docker push fidals/coala-ci:latest;
+    docker push fidals/pdd-ci:latest;
+    fi
