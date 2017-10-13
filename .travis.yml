@@ -8,6 +8,6 @@ script:
   - docker build -t fidals/pdd-ci ./pdd/
 after_success:
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
-    docker push fidals/coala:latest;
-    docker push fidals/pdd:latest;
+    docker push fidals/coala-ci:latest;
+    docker push fidals/pdd-ci:latest;
     fi
